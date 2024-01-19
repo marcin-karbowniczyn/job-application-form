@@ -25,6 +25,7 @@ def index(request):
                 messages.success(request, "Form submitted succesfully")
             except django.db.utils.IntegrityError:
                 messages.error(request, "Candidate with this e-mail address has already been submitted.")
+
             return redirect('index')
 
     # Set date picker to only accept dates from today
