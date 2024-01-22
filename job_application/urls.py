@@ -5,5 +5,5 @@ from . import views
 # First argument is url, this is an empty string because we use homepage. 'about' == /about
 urlpatterns = [
     path('', views.index, name='index'),
-    path('about', views.about, name='about')
+    path('about/', views.about, name='about')
 ]
