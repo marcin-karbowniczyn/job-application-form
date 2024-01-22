@@ -34,3 +34,7 @@ def index(request):
     # Set date picker to only accept dates from today
     date_picker_min = str(date.today())
     return render(request, 'index.html', {'date_picker_min': date_picker_min})
+
+
+def about(req):
+    return render(req, "about.html")
