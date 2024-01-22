@@ -3,6 +3,7 @@ from datetime import date
 import django.db.utils
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from .utils import send_email
 from .forms import ApplicationForm
 from .models import Form
 
@@ -22,6 +23,8 @@ def index(request):
 
             try:
                 Form.objects.create(first_name=first_name, last_name=last_name, email=email, date=start_date, occupation=occupation)
+                send_email(first_name=first_name, last_name=last_name, email=email, date=start_date, occupation=occupation)
+
                 messages.success(request, "Form submitted succesfully")
             except django.db.utils.IntegrityError:
                 messages.error(request, "Candidate with this e-mail address has already been submitted.")
