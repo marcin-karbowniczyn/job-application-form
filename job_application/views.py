@@ -3,6 +3,7 @@ from datetime import date
 import django.db.utils
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.http import JsonResponse
 from .utils import send_email
 from .forms import ApplicationForm
 from .models import Form
@@ -38,3 +39,9 @@ def index(request):
 
 def about(req):
     return render(req, "about.html")
+
+
+def test(req):
+    data = {"name": "marcin", "last_name": "karbowniczyn"}
+    response = JsonResponse(data, status=200)
+    return response
